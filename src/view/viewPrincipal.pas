@@ -9,22 +9,36 @@ uses
   Vcl.ActnCtrls, Vcl.ExtCtrls, Vcl.PlatformDefaultStyleActnCtrls,
   System.ImageList, cxGraphics, cxClasses, dxBar, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, dxRibbonSkins, dxRibbonCustomizationForm, dxRibbon,
-  IniFiles;
+  IniFiles, cxCustomData, cxStyles, cxTL, cxTLdxBarBuiltInMenu,
+  cxInplaceContainer;
 
 type
   TvwPrincipal = class(TForm)
-    act: TActionManager;
+    actPrincipal: TActionManager;
     actProduto: TAction;
     actCliente: TAction;
     actVenda: TAction;
-    cxImageList1: TcxImageList;
-    RibbonTab1: TdxRibbonTab;
+    imgPrincipal: TcxImageList;
+    RibbonTabPrincipal: TdxRibbonTab;
     Ribbon: TdxRibbon;
+    BarPrincipal: TdxBarManager;
+    BarPrincipalBar1: TdxBar;
+    BarPrincipalBar2: TdxBar;
+    dxBarLargeButton1: TdxBarLargeButton;
+    dxBarLargeButton2: TdxBarLargeButton;
+    dxBarLargeButton3: TdxBarLargeButton;
+    RibbonTabFinanceiro: TdxRibbonTab;
+    RibbonTabFerramentas: TdxRibbonTab;
+    BarPrincipalBar3: TdxBar;
+    BarPrincipalBar4: TdxBar;
+    actSorteador: TAction;
+    dxBarLargeButton4: TdxBarLargeButton;
+    actFaturamento: TAction;
+    dxBarLargeButton5: TdxBarLargeButton;
+    cxTreeList1: TcxTreeList;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-    FIni: TIniFile;
-
     procedure CarregaCorPrincipal();
   public
     { Public declarations }
@@ -38,6 +52,8 @@ implementation
 
 {$R *.dfm}
 
+uses AppINI;
+
 { TvwPrincipal }
 
 procedure TvwPrincipal.CarregaCorPrincipal;
@@ -45,7 +61,7 @@ var
   vStrCor: String;
 begin
 
-  vStrCor := FIni.ReadString('Principal', 'Cor', 'B');
+  vStrCor := TAppINI.GetValue('Sistema', 'Cor', 'B');
   case vStrCor[1] of
     'B': Self.Ribbon.ColorSchemeAccent := rcsaBlue;
     'Y': Self.Ribbon.ColorSchemeAccent := rcsaYellow;
@@ -53,6 +69,8 @@ begin
     'O': Self.Ribbon.ColorSchemeAccent := rcsaOrange;
     'P': Self.Ribbon.ColorSchemeAccent := rcsaPurple;
   end;
+
+  TAppINI.SetValue('Sistema', 'Cor', vStrCor[1]);
 
 end;
 
@@ -63,8 +81,11 @@ end;
 
 procedure TvwPrincipal.Init;
 begin
-  FIni := TIniFile.Create( ExtractFilePath(Application.ExeName) + '\app.ini' );
 
+  // Ativa a primeira aba...
+  RibbonTabPrincipal.Active := True;
+
+  // Carrga a cor do sistema...
   Self.CarregaCorPrincipal();
 end;
 

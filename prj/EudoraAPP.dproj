@@ -79,21 +79,21 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="..\view\viewPrincipal.pas">
+        <DCCReference Include="..\src\view\viewPrincipal.pas">
             <Form>vwPrincipal</Form>
         </DCCReference>
-        <DCCReference Include="..\dto\dtoCliente.pas"/>
-        <DCCReference Include="..\dto\dtoVenda.pas"/>
-        <DCCReference Include="..\dto\dtoProduto.pas"/>
-        <DCCReference Include="..\view\browserBase.pas">
+        <DCCReference Include="..\src\dto\dtoCliente.pas"/>
+        <DCCReference Include="..\src\dto\dtoVenda.pas"/>
+        <DCCReference Include="..\src\dto\dtoProduto.pas"/>
+        <DCCReference Include="..\src\view\browserBase.pas">
             <Form>bwBase</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\view\fichaBase.pas">
+        <DCCReference Include="..\src\view\fichaBase.pas">
             <Form>frmBase</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\view\browserProdutos.pas"/>
+        <DCCReference Include="..\src\view\browserProdutos.pas"/>
+        <DCCReference Include="..\src\connection\JSONConnection.pas"/>
+        <DCCReference Include="..\src\connection\AppINI.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -117,6 +117,12 @@
             </Delphi.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="Win32\Debug\EudoraAPP.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Win32\Debug\EudoraAPP.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>EudoraAPP.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

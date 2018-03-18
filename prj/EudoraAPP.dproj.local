@@ -2,30 +2,36 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2018/03/11 12:33:25.000.514,=C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2018/03/11 12:34:53.000.853,C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\marlo\Desktop\JSONTEste\Unit1.pas</Transaction>
-    <Transaction>2018/03/11 12:34:53.000.853,C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\marlo\Desktop\JSONTEste\Unit1.dfm</Transaction>
+    <Transaction>2018/03/11 12:34:53.000.853,C:\Users\marlo\Desktop\JSONTEste\Unit1.dfm=C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2018/03/11 12:34:53.000.853,C:\Users\marlo\Desktop\JSONTEste\Unit1.pas=C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2018/03/11 12:54:16.000.125,=C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2018/03/11 12:56:33.000.531,C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\marlo\Desktop\JSONTEste\dto\dtoCliente.pas</Transaction>
+    <Transaction>2018/03/11 12:56:33.000.531,C:\Users\marlo\Desktop\JSONTEste\dto\dtoCliente.pas=C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
     <Transaction>2018/03/11 12:59:04.000.556,=C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2018/03/11 13:02:21.000.907,C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\marlo\Desktop\JSONTEste\dto\dtoVenda.pas</Transaction>
+    <Transaction>2018/03/11 13:02:21.000.907,C:\Users\marlo\Desktop\JSONTEste\dto\dtoVenda.pas=C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
     <Transaction>2018/03/11 13:02:30.000.557,=C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2018/03/11 13:04:10.000.858,C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\marlo\Desktop\JSONTEste\dto\dtoProduto.pas</Transaction>
-    <Transaction>2018/03/11 13:06:42.000.031,C:\Users\marlo\Desktop\JSONTEste\Unit1.pas=C:\Users\marlo\Desktop\JSONTEste\view\principal.pas</Transaction>
-    <Transaction>2018/03/11 13:06:42.000.031,C:\Users\marlo\Desktop\JSONTEste\Unit1.dfm=C:\Users\marlo\Desktop\JSONTEste\view\principal.dfm</Transaction>
-    <Transaction>2018/03/11 13:08:40.000.610,C:\Users\marlo\Desktop\JSONTEste\view\principal.pas=C:\Users\marlo\Desktop\JSONTEste\view\viewPrincipal.pas</Transaction>
-    <Transaction>2018/03/11 13:08:40.000.610,C:\Users\marlo\Desktop\JSONTEste\view\principal.dfm=C:\Users\marlo\Desktop\JSONTEste\view\viewPrincipal.dfm</Transaction>
-    <Transaction>2018/03/11 13:28:48.000.896,C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\_Codes\Delphi\VendasEudora\Eudora.dproj</Transaction>
+    <Transaction>2018/03/11 13:04:10.000.858,C:\Users\marlo\Desktop\JSONTEste\dto\dtoProduto.pas=C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2018/03/11 13:06:42.000.031,C:\Users\marlo\Desktop\JSONTEste\view\principal.dfm=C:\Users\marlo\Desktop\JSONTEste\Unit1.dfm</Transaction>
+    <Transaction>2018/03/11 13:06:42.000.031,C:\Users\marlo\Desktop\JSONTEste\view\principal.pas=C:\Users\marlo\Desktop\JSONTEste\Unit1.pas</Transaction>
+    <Transaction>2018/03/11 13:08:40.000.610,C:\Users\marlo\Desktop\JSONTEste\view\viewPrincipal.pas=C:\Users\marlo\Desktop\JSONTEste\view\principal.pas</Transaction>
+    <Transaction>2018/03/11 13:08:40.000.610,C:\Users\marlo\Desktop\JSONTEste\view\viewPrincipal.dfm=C:\Users\marlo\Desktop\JSONTEste\view\principal.dfm</Transaction>
+    <Transaction>2018/03/11 13:28:48.000.896,C:\_Codes\Delphi\VendasEudora\Eudora.dproj=C:\Users\marlo\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>2018/03/11 19:26:57.000.270,=C:\_Codes\Delphi\VendasEudora\Unit1.pas</Transaction>
     <Transaction>2018/03/11 19:27:10.000.335,=C:\_Codes\Delphi\VendasEudora\Unit2.pas</Transaction>
-    <Transaction>2018/03/11 19:27:27.000.411,C:\_Codes\Delphi\VendasEudora\Unit2.dfm=C:\_Codes\Delphi\VendasEudora\view\browserProdutos.dfm</Transaction>
-    <Transaction>2018/03/11 19:27:27.000.411,C:\_Codes\Delphi\VendasEudora\Unit2.pas=C:\_Codes\Delphi\VendasEudora\view\browserProdutos.pas</Transaction>
-    <Transaction>2018/03/11 19:27:41.000.089,C:\_Codes\Delphi\VendasEudora\Eudora.dproj=C:\_Codes\Delphi\VendasEudora\prj\EudoraAPP.dproj</Transaction>
-    <Transaction>2018/03/11 19:32:12.000.569,C:\_Codes\Delphi\EudoraAPP\view\browserProdutos.pas=C:\_Codes\Delphi\EudoraAPP\view\browserBase.pas</Transaction>
-    <Transaction>2018/03/11 19:32:12.000.569,C:\_Codes\Delphi\EudoraAPP\view\browserProdutos.dfm=C:\_Codes\Delphi\EudoraAPP\view\browserBase.dfm</Transaction>
+    <Transaction>2018/03/11 19:27:27.000.411,C:\_Codes\Delphi\VendasEudora\view\browserProdutos.dfm=C:\_Codes\Delphi\VendasEudora\Unit2.dfm</Transaction>
+    <Transaction>2018/03/11 19:27:27.000.411,C:\_Codes\Delphi\VendasEudora\view\browserProdutos.pas=C:\_Codes\Delphi\VendasEudora\Unit2.pas</Transaction>
+    <Transaction>2018/03/11 19:27:41.000.089,C:\_Codes\Delphi\VendasEudora\prj\EudoraAPP.dproj=C:\_Codes\Delphi\VendasEudora\Eudora.dproj</Transaction>
+    <Transaction>2018/03/11 19:32:12.000.569,C:\_Codes\Delphi\EudoraAPP\view\browserBase.dfm=C:\_Codes\Delphi\EudoraAPP\view\browserProdutos.dfm</Transaction>
+    <Transaction>2018/03/11 19:32:12.000.569,C:\_Codes\Delphi\EudoraAPP\view\browserBase.pas=C:\_Codes\Delphi\EudoraAPP\view\browserProdutos.pas</Transaction>
     <Transaction>2018/03/11 21:57:41.000.680,=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas</Transaction>
-    <Transaction>2018/03/11 22:00:07.000.848,C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas=C:\_Codes\Delphi\EudoraAPP\view\fichaBase.pas</Transaction>
-    <Transaction>2018/03/11 22:00:07.000.848,C:\_Codes\Delphi\EudoraAPP\prj\Unit1.dfm=C:\_Codes\Delphi\EudoraAPP\view\fichaBase.dfm</Transaction>
+    <Transaction>2018/03/11 22:00:07.000.848,C:\_Codes\Delphi\EudoraAPP\view\fichaBase.dfm=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.dfm</Transaction>
+    <Transaction>2018/03/11 22:00:07.000.848,C:\_Codes\Delphi\EudoraAPP\view\fichaBase.pas=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas</Transaction>
     <Transaction>2018/03/11 22:00:51.000.929,=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas</Transaction>
-    <Transaction>2018/03/11 22:01:20.000.432,C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas=C:\_Codes\Delphi\EudoraAPP\view\browserProdutos.pas</Transaction>
+    <Transaction>2018/03/11 22:01:20.000.432,C:\_Codes\Delphi\EudoraAPP\view\browserProdutos.pas=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas</Transaction>
+    <Transaction>2018/03/18 12:55:32.338,=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas</Transaction>
+    <Transaction>2018/03/18 12:56:42.773,C:\_Codes\Delphi\EudoraAPP\src\connection\JSONConnection.pas=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas</Transaction>
+    <Transaction>2018/03/18 12:59:35.668,=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas</Transaction>
+    <Transaction>2018/03/18 13:05:31.780,=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas</Transaction>
+    <Transaction>2018/03/18 13:07:05.651,=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas</Transaction>
+    <Transaction>2018/03/18 13:12:10.868,C:\_Codes\Delphi\EudoraAPP\src\connection\AppINI.pas=C:\_Codes\Delphi\EudoraAPP\prj\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>
