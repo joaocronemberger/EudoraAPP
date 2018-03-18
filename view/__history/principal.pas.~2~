@@ -1,0 +1,87 @@
+unit principal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Rest.Json, Generics.Collections;
+
+type
+  TForm1 = class(TForm)
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+  TTeste = class
+    private
+      FCampoA: String;
+      FCampoB: Integer;
+      FTeste: TTeste;
+    public
+      property CampoA: String read FCampoA write FCampoA;
+      property CampoB: Integer read FCampoB write FCampoB;
+      property Teste: TTeste read FTeste write FTeste;
+  end;
+
+  TListaTeste = class
+    private
+      FLista: TObjectList<TTeste>;
+    public
+      property Lista: TObjectList<TTeste> read FLista write FLista;
+
+      constructor Create;
+      destructor Destroy;
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  Lista: TListaTeste;
+begin
+  Lista := TListaTeste.Create;
+
+
+  Lista.Lista.Add( TTeste.Create );
+  with Lista.Lista.Last do
+  begin
+    CampoA := 'AAA';
+    CampoB := 2;
+
+    Teste := TTeste.Create;
+    Teste.CampoA := 'OIOIOI';
+    Teste.CampoB := 999;
+  end;
+
+  Lista.Lista.Add( TTeste.Create );
+  with Lista.Lista.Last do
+  begin
+    CampoA := 'UAHUAHUHA';
+    CampoB := 255;
+  end;
+
+  Memo1.Lines.Text := TJson.ObjectToJsonString( Lista );
+
+end;
+
+{ TListaTeste }
+
+constructor TListaTeste.Create;
+begin
+  FLista := TObjectList<TTeste>.Create(True);
+end;
+
+destructor TListaTeste.Destroy;
+begin
+  FLista.Free;
+end;
+
+end.

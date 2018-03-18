@@ -1,0 +1,16 @@
+﻿[actVenda]
+Coordinates=13,55,69,36
+
+[actCliente]
+Coordinates=192,1,72,36
+
+[actProduto]
+Coordinates=192,56,77,36
+
+[]
+Coordinates=10,56,62,36
+Visible=True
+
+[actPrincipal]
+Coordinates=192,111,40,36
+

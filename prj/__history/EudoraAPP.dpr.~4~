@@ -1,0 +1,19 @@
+program EudoraAPP;
+
+uses
+  Vcl.Forms,
+  viewPrincipal in '..\view\viewPrincipal.pas' {vwPrincipal},
+  dtoCliente in '..\dto\dtoCliente.pas',
+  dtoVenda in '..\dto\dtoVenda.pas',
+  dtoProduto in '..\dto\dtoProduto.pas',
+  browserBase in '..\view\browserBase.pas' {bwBase};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TvwPrincipal, vwPrincipal);
+  Application.CreateForm(TbwBase, bwBase);
+  Application.Run;
+end.

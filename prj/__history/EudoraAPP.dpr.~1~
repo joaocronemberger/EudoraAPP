@@ -1,0 +1,19 @@
+program EudoraAPP;
+
+uses
+  Vcl.Forms,
+  viewPrincipal in '..\view\viewPrincipal.pas' {Form1},
+  dtoCliente in '..\dto\dtoCliente.pas',
+  dtoVenda in '..\dto\dtoVenda.pas',
+  dtoProduto in '..\dto\dtoProduto.pas',
+  browserProdutos in '..\view\browserProdutos.pas' {Form2};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TForm2, Form2);
+  Application.Run;
+end.
