@@ -10,7 +10,8 @@ uses
   fichaBase in '..\src\view\fichaBase.pas' {frmBase},
   browserProdutos in '..\src\view\browserProdutos.pas',
   JSONConnection in '..\src\connection\JSONConnection.pas',
-  AppINI in '..\src\connection\AppINI.pas';
+  AppINI in '..\src\connection\AppINI.pas',
+  dtoLista in '..\src\dto\dtoLista.pas';
 
 {$R *.res}
 

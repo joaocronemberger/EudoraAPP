@@ -10,7 +10,7 @@ uses
   System.ImageList, cxGraphics, cxClasses, dxBar, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, dxRibbonSkins, dxRibbonCustomizationForm, dxRibbon,
   IniFiles, cxCustomData, cxStyles, cxTL, cxTLdxBarBuiltInMenu,
-  cxInplaceContainer;
+  cxInplaceContainer, cxTextEdit;
 
 type
   TvwPrincipal = class(TForm)
@@ -36,6 +36,8 @@ type
     actFaturamento: TAction;
     dxBarLargeButton5: TdxBarLargeButton;
     cxTreeList1: TcxTreeList;
+    cxTreeList1Column1: TcxTreeListColumn;
+    cxTreeList1Column2: TcxTreeListColumn;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -52,7 +54,7 @@ implementation
 
 {$R *.dfm}
 
-uses AppINI;
+uses AppINI, JSONConnection, dtoProduto;
 
 { TvwPrincipal }
 
@@ -80,6 +82,8 @@ begin
 end;
 
 procedure TvwPrincipal.Init;
+var
+  vObj: TProduto;
 begin
 
   // Ativa a primeira aba...
@@ -87,6 +91,16 @@ begin
 
   // Carrga a cor do sistema...
   Self.CarregaCorPrincipal();
+
+  for vObj in Connection.ListaProduto.Lista do
+  begin
+    with cxTreeList1.Add do
+    begin
+      Values[ cxTreeList1Column1.ItemIndex ] := vObj.Nome;
+      Values[ cxTreeList1Column2.ItemIndex ] := vObj.ValorUnitario;
+    end;
+  end;
+
 end;
 
 end.

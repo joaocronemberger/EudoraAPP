@@ -2,21 +2,49 @@ unit JSONConnection;
 
 interface
 
-uses Rest.Json, System.Classes, Vcl.Forms, System.SysUtils, Appini;
+uses Rest.Json, System.Classes, Vcl.Forms, System.SysUtils, Appini,
+  dtoProduto;
 
 type
   TConnections = class
+  private
+    FListaProduto: TListaProduto;
   public
-    class function GetURL(): String;
+    property ListaProduto: TListaProduto read FListaProduto write FListaProduto;
+
+    constructor Create();
+    destructor Destroy();
   end;
+
+  function Connection: TConnections;
+
+var
+  _Connection: TConnections;
 
 implementation
 
+function Connection(): TConnections;
+begin
+  if not Assigned(_Connection)
+    then _Connection := TConnections.Create;
+  Result := _Connection;
+end;
+
+
 { TConnections }
 
-class function TConnections.GetURL: String;
+destructor TConnections.Destroy;
 begin
-  Result := TAppINI.GetValue('Database','Folder', ExtractFilePath(Application.ExeName) + '\' );
+  FListaProduto.Free;
 end;
+
+{ TConnections }
+
+constructor TConnections.Create;
+begin
+  FListaProduto := TListaProduto.Create;
+  FListaProduto.Load;
+end;
+
 
 end.

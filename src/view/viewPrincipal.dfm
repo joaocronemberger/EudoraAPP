@@ -64,13 +64,33 @@ object vwPrincipal: TvwPrincipal
     end
   end
   object cxTreeList1: TcxTreeList
-    Left = 128
-    Top = 304
+    Left = 104
+    Top = 280
     Width = 353
     Height = 249
-    Bands = <>
+    Bands = <
+      item
+      end>
     Navigator.Buttons.CustomButtons = <>
     TabOrder = 5
+    object cxTreeList1Column1: TcxTreeListColumn
+      Caption.Text = 'teste'
+      DataBinding.ValueType = 'String'
+      Position.ColIndex = 0
+      Position.RowIndex = 0
+      Position.BandIndex = 0
+      Summary.FooterSummaryItems = <>
+      Summary.GroupFooterSummaryItems = <>
+    end
+    object cxTreeList1Column2: TcxTreeListColumn
+      Caption.Text = 'este'
+      DataBinding.ValueType = 'String'
+      Position.ColIndex = 1
+      Position.RowIndex = 0
+      Position.BandIndex = 0
+      Summary.FooterSummaryItems = <>
+      Summary.GroupFooterSummaryItems = <>
+    end
   end
   object actPrincipal: TActionManager
     ActionBars = <
