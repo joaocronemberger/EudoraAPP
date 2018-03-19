@@ -1,0 +1,5 @@
+  assembler[TABLENAME] in 'mvc\assembler\assembler[TABLENAME].pas',
+  controller[TABLENAME] in 'mvc\controller\controller[TABLENAME].pas',
+  dao[TABLENAME] in 'mvc\dao\dao[TABLENAME].pas',
+  dto[TABLENAME] in 'mvc\dto\dto[TABLENAME].pas',
+  model[TABLENAME] in 'mvc\model\model[TABLENAME].pas',

@@ -1,0 +1,16 @@
+[TABLENAME]          = Amortizacao
+[FULLTABLENAME]      = FDO_Amortizacao
+
+[PKFIELD]            = CodAmortizacao
+
+[COUNTIDENTITYFIELD] = 1
+[LOOPIDENTITYFIELD]  =   Result[0] := 'CodAmortizacao';
+
+[COUNTPKFIELD]       = 1
+[LOOPPKFIELD]        =   Result[0] := 'CodAmortizacao';
+
+[LOOPPRIVATEFILEDS]  = FCodAmortizacao: Integer;
+[LOOPPROPERTIES]     = property CodAmortizacao: Integer read GetCodAmortizacao write SetCodAmortizacao;
+
+[LOOPDTOTOMODEL]     = aModel.CodAmortizacao := aDTO.CodAmortizacao;
+[LOOPMODELTODTO]     = aDTO.CodAmortizacao := aModel.CodAmortizacao;
