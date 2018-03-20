@@ -22,20 +22,32 @@ type
       FMethodFDO: TMethodFDO;
       FURL: String;
 
+      FSenha: String;
+      FLogin: String;
+
       function GetHeader: TIdHeaderList;
 
       procedure LoadHTTP();
     public
       constructor Create( aMethod: TMethodFDO ); Reintroduce;
 
+      {Properties}
       property Header: TIdHeaderList read GetHeader;
 
-      function Post(const aContent: String; out aAnswer: String): Boolean;
-      function Get(out aAnswer: String): Boolean;
-      function Delete(const aContent: String; out aAnswer: String): Boolean;
+      {Send Methods}
+      function Post(const aContent: String; const ArgsURL: array of const; out aAnswer: String): Boolean;
+      function Get(const ArgsURL: array of const; out aAnswer: String): Boolean;
+      function Delete(const aContent: String; const ArgsURL: array of const; out aAnswer: String): Boolean;
 
-      function GetJSON( const Args: array of const ): String;
+      {Result JSON}
+      function GetJSON(const ArgsURL: array of const): String;
+
+      {Converter}
+      function JSONFloatToStr(aValue: Double; aFormat: String = '#0.00'): String;
+      function JSONStrToFloat(aValue: String): Double;
   end;
+
+
 
 const
   CRLF = #13#10;
@@ -45,9 +57,9 @@ const
     'CotizacaoResgate_GUIDE',
     'CotizacaoAplicacao_GUIDE');
     
-implementation                                                          
+implementation
 
-uses mvcMiscelania, SysUtils;
+uses mvcMiscelania, SysUtils, mvcReferenceManipulator;
 
 { TRESTRequest }
 
@@ -61,11 +73,11 @@ begin
 end;
 
 function TRESTRequest.Delete(const aContent: String;
-  out aAnswer: String): Boolean;
+  const ArgsURL: array of const; out aAnswer: String): Boolean;
 begin
   Result := True;
   try
-    aAnswer := FHTTP.Delete( Self.FURL );
+    aAnswer := FHTTP.Delete( Format(Self.FURL, ArgsURL) );
   except
     on E: EIdHTTPProtocolException do
     begin
@@ -80,11 +92,11 @@ begin
   end;
 end;
 
-function TRESTRequest.Get(out aAnswer: String): Boolean;
+function TRESTRequest.Get(const ArgsURL: array of const; out aAnswer: String): Boolean;
 begin
   Result := True;
   try
-    aAnswer := FHTTP.Get( Self.FURL );
+    aAnswer := FHTTP.Get( Format(Self.FURL, ArgsURL) );
   except
     on E: EIdHTTPProtocolException do
     begin
@@ -104,7 +116,7 @@ begin
   Result := FHTTP.Request.CustomHeaders;
 end;
 
-function TRESTRequest.GetJSON( const Args: array of const ): String;
+function TRESTRequest.GetJSON(const ArgsURL: array of const): String;
 begin
   case FMethodFDO of
     mFDORest_Token_GUIDE :
@@ -115,19 +127,23 @@ begin
 
     mFDORest_CotizacaoResgate_GUIDE :
       Result := '{ ' + CRLF +
-                '  "quota_value": "%d", ' + CRLF +
-                '  "iof_value": "%d", ' + CRLF +
-                '  "tax_value": "%d", ' + CRLF +
-                '  "net_value": "%d" ' + CRLF +
+                '  "quota_value": "%s", ' + CRLF +
+                '  "iof_value": "%s", ' + CRLF +
+                '  "tax_value": "%s", ' + CRLF +
+                '  "net_value": "%s", ' + CRLF +
+                '  "gross_value": "%s" ' + CRLF +
                 '}';
 
     mFDORest_CotizacaoAplicacao_GUIDE :
       Result := '{ ' + CRLF +
-                '  "quota_value": "%d"' + CRLF +
+                '  "quota_value": "%s"' + CRLF +
                 '}';
   end;
 
-  Result := Format(Result, Args);
+  if FMethodFDO = mFDORest_Token_GUIDE
+    then Result := Format(Result, [FLogin, FSenha])
+    else Result := Format(Result, ArgsURL);
+    
 end;
 
 procedure TRESTRequest.LoadHTTP();
@@ -140,37 +156,48 @@ begin
   if FileExists( vPath ) then
   begin
     vIniFile := TIniFile.Create( vPath );
-    FURL := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'URL', '');
+    try
+      FURL := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'URL', '');
 
-    FHTTP.Request.UserAgent               := 'Mozilla/3.0 (compatible; Indy Library)';
-    FHTTP.Request.Accept                  := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'Accept', 'application/json');
-    FHTTP.Request.ContentType             := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'ContentType', 'application/json');
-    FHTTP.Request.Connection              := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'Connection', 'keep-alive');
-    FHTTP.Request.BasicAuthentication     := StrToBoolDef(vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'BasicAuthentication', 'False'), False);
-    FHTTP.ProxyParams.BasicAuthentication := StrToBoolDef(vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'BasicAuthentication', 'False'), False);
-    FHTTP.ProxyParams.ProxyPassword       := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'ProxyPassword', '');
-    FHTTP.ProxyParams.ProxyPort           := StrToIntDef(vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'ProxyPort', '0'),0);
-    FHTTP.ProxyParams.ProxyServer         := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'ProxyServer', '');
-    FHTTP.ProxyParams.ProxyUsername       := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'ProxyUsername', '');
+      FHTTP.Request.UserAgent               := 'Mozilla/3.0 (compatible; Indy Library)';
+      FHTTP.Request.Accept                  := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'Accept', 'application/json');
+      FHTTP.Request.ContentType             := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'ContentType', 'application/json');
+      FHTTP.Request.Connection              := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'Connection', 'keep-alive');
+      FHTTP.Request.BasicAuthentication     := StrToBoolDef(vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'BasicAuthentication', 'False'), False);
+      FHTTP.ProxyParams.BasicAuthentication := StrToBoolDef(vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'BasicAuthentication', 'False'), False);
+      FHTTP.ProxyParams.ProxyPassword       := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'ProxyPassword', '');
+      FHTTP.ProxyParams.ProxyPort           := StrToIntDef(vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'ProxyPort', '0'),0);
+      FHTTP.ProxyParams.ProxyServer         := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'ProxyServer', '');
+      FHTTP.ProxyParams.ProxyUsername       := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'ProxyUsername', '');
 
-    if StrToBool(vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'SSL', 'False')) then
-    begin
-      FSSL := TIdSSLIOHandlerSocketBase.Create;
-      FHTTP.IOHandler := FSSL;
+      if StrToBool(vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'SSL', 'False')) then
+      begin
+        FSSL := TIdSSLIOHandlerSocketBase.Create;
+        FHTTP.IOHandler := FSSL;
+      end;
+
+      if FMethodFDO = mFDORest_Token_GUIDE then
+      begin
+        FLogin := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'Login', '');
+        FSenha := vIniFile.ReadString( NomeMethodFDO[ FMethodFDO ] , 'Senha', '');
+      end;
+
+    finally
+      SafeFree(vIniFile);
     end;
 
   end;
 
 end;
 
-function TRESTRequest.Post(const aContent: String; out aAnswer: String): Boolean;
+function TRESTRequest.Post(const aContent: String; const ArgsURL: array of const; out aAnswer: String): Boolean;
 var
   JSonToSend : TStringStream;
 begin
   Result := True;
   try
     JsonToSend := TStringStream.Create( UTF8Encode(aContent) );
-    aAnswer := FHTTP.Post( Self.FURL, JsonToSend );
+    aAnswer := FHTTP.Post( Format(Self.FURL, ArgsURL), JsonToSend );
   except
     on E: EIdHTTPProtocolException do
     begin
@@ -183,6 +210,21 @@ begin
       aAnswer := e.Message;
     end;
   end;
+end;
+
+function TRESTRequest.JSONFloatToStr(aValue: Double;
+  aFormat: String): String;
+begin
+  Result := FormatFloat(aFormat, aValue);
+  Result := StringReplace(Result, ',', '.', [rfReplaceAll]);
+end;
+
+function TRESTRequest.JSONStrToFloat(aValue: String): Double;
+var
+  Aux: String;
+begin
+  Aux := StringReplace(aValue, '.', ',', [rfReplaceAll]);
+  Result := StrToFloat(Aux);
 end;
 
 end.
